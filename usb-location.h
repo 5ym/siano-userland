@@ -8,9 +8,10 @@
 
 /*
  * Where a device sits on the bus, for --list: " bus=B address=A port=P".
- * B and A name the usbfs node (/dev/bus/usb/BBB/AAA on Linux).  P is the
- * device's name under /sys/bus/usb/devices on Linux (bus-port.port...), or
- * "-" when libusb cannot tell the port path.  A device without a serial,
+ * B and A are libusb's bus number and device address; on Linux they name the
+ * usbfs node /dev/bus/usb/BBB/AAA.  P is built from the port path the same
+ * way as the device's name under /sys/bus/usb/devices on Linux
+ * (bus-port.port...), or "-" when libusb cannot tell the port path.  A device without a serial,
  * such as the PX-S1UD, is told apart by P.  None of this opens the device.
  *
  * Returns 0, or -1 when the buffer is too small.

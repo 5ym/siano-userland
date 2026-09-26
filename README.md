@@ -142,7 +142,7 @@ termux-usb -r -e './siano-ts --channel 27' /dev/bus/usb/001/004
 | `-v, --verbose` | なし | 制御メッセージ種別を標準エラー出力へ表示。 |
 | `-h, --help` | なし | ヘルプを表示して終了。 |
 
-`--list` の各行は `番号: VID:PID 機種名 bus=B address=A port=P` の形です（対応外の Siano デバイスは番号の代わりに `-`）。`bus` と `address` は usbfs のノード（Linux では `/dev/bus/usb/BBB/AAA`）、`port` は Linux の `/sys/bus/usb/devices` での名前（`バス-ポート.ポート…`）で、ポートの並びが分からないときは `-` です。PX-S1UD のようにシリアルの無い機材は `port` で見分けられ、`--fd` で渡すノードも `bus` と `address` から分かります。いずれもデバイスを開かずに得られる値です。
+`--list` の各行は `番号: VID:PID 機種名 bus=B address=A port=P` の形です（対応外の Siano デバイスは番号の代わりに `-`）。`bus` と `address` は libusb のバス番号とデバイスアドレスで、Linux では usbfs のノード `/dev/bus/usb/BBB/AAA` に当たります。`port` はポートの並びを Linux の `/sys/bus/usb/devices` での名前と同じ形（`バス-ポート.ポート…`）にしたもので、並びが分からないときは `-` です。PX-S1UD のようにシリアルの無い機材は `port` で見分けられ、`--fd` で渡すノードも `bus` と `address` から分かります。いずれもデバイスを開かずに得られる値です。
 
 ```
 $ ./siano-ts --list
